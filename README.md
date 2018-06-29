@@ -34,3 +34,7 @@
 - 模块化工具：webpack、rollup、browserify
 - 静态文件：可以直接在JS代码中进行引用，交由模块化工具转化成线上可用的静态资源，并且可以定制转化过程来适应不同的需求场景
 - 其他：浏览器兼容性、toB还是toC、移动端还是PC端
+
+## 常用配置
+- webpack dev server
+- Hot module replacement
