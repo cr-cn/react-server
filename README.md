@@ -38,3 +38,23 @@
 ## 常用配置
 - webpack dev server
 - Hot module replacement
+
+## 使用eslint和editorconfig规范代码
+- 规范代码有利用团队协作
+- 纯手工规范费时费力而且不能保证准确性
+- 能配合编辑自动提醒错误，提高开发效率
+- eslint-config-airbnb
+- babel-eslint
+- eslint-config-standard
+- eslint-loader
+- eslint-plugin-import
+- eslint-plugin-node
+- eslint-plugin-jsx-ally
+- eslint-plugin-promise
+- eslint-plugin-react
+- eslint-plugin-standard --save-dev
+
+## 使用eslint强相关git绑定
+- git init
+- husky 
+
