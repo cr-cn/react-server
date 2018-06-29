@@ -7,9 +7,9 @@
 		"build:client": "webpack --config build/webpack.config.client.js",
 		"build:server": "webpack --config build/webpack.config.server.js",
 		"dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
+		"dev:server": "cross-env NODE_ENV=development node server/server.js",
 		"clear": "rm -rf dist",
-		"build": "npm run clear && npm run build:client && npm run build:server",
-		"start": "node server/server.js"
+		"build": "npm run clear && npm run build:client && npm run build:server"
 	},
 	"author": "Ray",
 	"license": "ISC",
@@ -70,6 +70,8 @@
 		"babel-preset-react-app": "^3.1.1",
 		"babel-runtime": "6.26.0",
 		"cross-env": "^5.2.0",
+		"http-proxy-middleware": "^0.18.0",
+		"memory-fs": "^0.4.1",
 		"react-hot-loader": "^4.3.3"
 	}
 }
