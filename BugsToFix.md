@@ -12,3 +12,8 @@
 
 ### eslint-disable-line
 - eslint 专用注释语法
+
+### Configuration for rule "react/jsx-wrap-multilines" is invalid: Value "[object Object]" should NOT have additional properties.
+- 
+
+### 

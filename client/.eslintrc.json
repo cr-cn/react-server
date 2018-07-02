@@ -7,12 +7,15 @@
 	},
 	"parserOptions": {
 		"ecmaVersion": 6,
-		"sourceType": "module"
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
 	},
 	"extends": "airbnb",
 	"rules": {
 		"semi": 0,
-		"react/jsx-filename-extension": "off",
-		"react/jsx-wrap-multilines": "off"
+		"react/jsx-filename-extension": [ 0 ],
+		"react/jsx-wrap-multilines": "error"
 	}
 }

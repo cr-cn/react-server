@@ -56,5 +56,6 @@
 
 ## 使用eslint强相关git绑定
 - git init
-- husky 
+- husky
 
+## 前端技术选型
