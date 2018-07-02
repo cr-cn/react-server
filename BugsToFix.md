@@ -16,4 +16,11 @@
 ### Configuration for rule "react/jsx-wrap-multilines" is invalid: Value "[object Object]" should NOT have additional properties.
 - 
 
-### 
+### Module not found: Error: Can't resolve './views/App' in '/Users/xujianwei/sites/react-server/client'
+- 不认识jsx文件，在webpack.base.js里面加一条配置
+
+### Warning: Each child in an array or iterator should have a unique "key" prop. 
+- 数组渲染的时候都要加上一个key
+
+### Failed prop type: The prop `appState` is marked as required in `inject-TopicList-with-appState`, but its value is `undefined`.
+- react16版本比较新，mobx还需要版本跟进，现阶段处理方式，去掉isRequired
