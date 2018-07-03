@@ -12,6 +12,7 @@ import appState from './store/app-state';
 // 	ReactDOM.render(<App />, document.getElementById('root'));
 // }
 
+/* eslint-disable */
 const root = document.getElementById('root');
 
 const render = (Component) => {
@@ -35,3 +36,4 @@ if (module.hot) {
 		render(NextApp);
 	});
 }
+/* eslint-enable */

@@ -13,7 +13,7 @@ router.post('/login', function(req, res, next) {
 				req.session.user = {
 					accessToken: req.body.accessToken,
 					loginName: resp.data.loginName,
-					is: resq.data.id,
+					is: resp.data.id,
 					avatarUrl: resp.data.avatar_url
 				};
 				res.json({
@@ -26,7 +26,7 @@ router.post('/login', function(req, res, next) {
 			if (err.response) {
 				res.json({
 					success: false,
-					data: err.response
+					data: err.response.data
 				});
 			} else {
 				next(err);
