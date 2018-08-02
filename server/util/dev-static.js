@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const MemoryFs = require('memory-fs');
 const ReactDomServer = require('react-dom/server');
 const proxy = require('http-proxy-middleware');
+const asyncBootstrap = require('react-async-bootstrapper');
 const serverConfig = require('../../build/webpack.config.server');
 const path = require('path');
 
@@ -25,7 +26,7 @@ const mfs = new MemoryFs();
 // webpack模块调用
 const serverCompiler = webpack(serverConfig);
 serverCompiler.outputFileSystem = mfs;
-let serverBundle;
+let serverBundle, createStoreMap;
 
 serverCompiler.watch({}, (err, stats) => {
 	if (err) throw err;
@@ -42,8 +43,14 @@ serverCompiler.watch({}, (err, stats) => {
 	// 这里必须要指定文件名如serber-entry.js
 	m._compile(bundle, 'server-entry.js');
 	serverBundle = m.exports.default;
+	createStoreMap = m.exports.createStoreMap;
 });
 
+const getStoreState = (stores) => {
+	return Object.keys(stores).reduce((result, storeName) => {
+		result[storeName] = stores[storeName].toJson();
+	});
+};
 module.exports = function(app) {
 	// 启用代理
 	app.use(
@@ -54,8 +61,20 @@ module.exports = function(app) {
 	);
 	app.get('*', function(req, res) {
 		getTemplate().then((template) => {
-			const content = ReactDomServer.renderToString(serverBundle);
-			res.send(template.replace('<app></app>', content));
+			const routerContext = {};
+			const stores = createStoreMap();
+			const app = serverBundle(stores, routerContext, req.url);
+
+			asyncBootstrap(app).then(() => {
+				if (routerContext.url) {
+					res.status(302).setHeader('Location', routerContext.url);
+					res.end();
+					return;
+				}
+				const state = getStoreState(stores);
+				const content = ReactDomServer.renderToString(app);
+				res.send(template.replace('<app></app>', content));
+			});
 		});
 	});
 };

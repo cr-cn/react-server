@@ -5,7 +5,7 @@ import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'mobx-react';
 import App from './views/App';
 
-import appState from './store/app-state';
+import AppState from './store/app-state';
 
 // 这里判断是否是web浏览器环境，若是node服务端环境，可能document会报错，或者用ReactDOM.hydrate()
 // if (typeof window !== 'undefined') {
@@ -18,7 +18,7 @@ const root = document.getElementById('root');
 const render = (Component) => {
 	ReactDOM.hydrate(
 		<AppContainer>
-			<Provider appState={appState}>
+			<Provider appState={new AppState()}>
 				<BrowserRouter>
 					<Component />
 				</BrowserRouter>

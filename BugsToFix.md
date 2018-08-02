@@ -24,3 +24,6 @@
 
 ### Failed prop type: The prop `appState` is marked as required in `inject-TopicList-with-appState`, but its value is `undefined`.
 - react16版本比较新，mobx还需要版本跟进，现阶段处理方式，去掉isRequired
+
+### Error: [mobx] There are multiple mobx instances active. This might lead to unexpected results. See https://github.com/mobxjs/mobx/issues/1082 for details.
+- 

@@ -1,26 +1,13 @@
-import { observable, computed, autorun, action } from 'mobx';
+import AppStateClass from './app-state';
 
-class AppState {
-	@observable count = 0;
-	@observable name = 'Ray';
-	@computed
-	get msg() {
-		return `${this.name} say count is ${this.count}`;
-	}
-	@action
-	add() {
-		this.count += 1;
-	}
-}
+export const AppState = AppStateClass;
 
-const appState = new AppState();
+export default {
+	AppState
+};
 
-autorun(() => {
-	console.log('appState.msg');
-});
-
-setInterval(() => {
-	appState.add();
-});
-
-export default appState;
+export const createStoreMap = () => {
+	return {
+		appState: new AppState()
+	};
+};
